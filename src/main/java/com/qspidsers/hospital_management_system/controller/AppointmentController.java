@@ -1,6 +1,7 @@
 package com.qspidsers.hospital_management_system.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import ch.qos.logback.core.rolling.helper.FileStoreUtil;
 
 @RestController
 @RequestMapping("/appointmentController")
+@CrossOrigin(value = "http://localhost:8181")
 public class AppointmentController {
 
 	@Autowired
