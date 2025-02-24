@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,29 +15,26 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Appointment {
+public class MedicalRecords {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int appointmentId;
+    private int recordId;
 
     @Column(nullable = false)
-    private LocalDate appointmentDate;
-
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
+    private LocalDate date;
 
     @Column(nullable = false)
-    private String purpose;
+    private String diagnosis;
+
+    @Column(nullable = false)
+    private String treatment;
+
+    private String notes;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id")
+    @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id")
+    @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctor;
-
-    public enum AppointmentStatus {
-        PENDING, CONFIRMED, CANCELLED
-    }
 }

@@ -1,5 +1,4 @@
 package com.qspidsers.hospital_management_system.entity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,12 +10,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Department {
+public class Service {
     @Id
-    private int departmentId;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int serviceId;
 
-    @Column(nullable = false, unique = true)
-    private String departmentName;
+    @Column(nullable = false)
+    private String name;
 
     private String description;
+
+    @Column(nullable = false)
+    private Double cost;
 }

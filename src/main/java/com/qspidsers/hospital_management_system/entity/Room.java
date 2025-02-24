@@ -1,8 +1,9 @@
 package com.qspidsers.hospital_management_system.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Department {
+public class Room {
     @Id
-    private int departmentId;
+    private int roomId; 
+    private int roomNumber;
 
-    @Column(nullable = false, unique = true)
-    private String departmentName;
-
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 }
